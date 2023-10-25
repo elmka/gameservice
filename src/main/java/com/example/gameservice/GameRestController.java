@@ -15,18 +15,23 @@ public class GameRestController {
         return "ok";
     }
 
-    @GetMapping("/a")
-    public String a(@RequestParam String p1, @RequestParam(required = false) String p2) {
-        return p1 + " " + p2;
+    @GetMapping("/games/{id}")
+    public String getGame(@PathVariable int id) {
+        return GameHandler.getGame(id);
     }
 
-    @GetMapping("/game/{id}")
-    public String getGame(@PathVariable Integer id) {
-        return id.toString();
+    @GetMapping("/games/ongoing")
+    public String getOngoingGames() {
+        return GameHandler.getOngoingGames();
     }
 
-    @PostMapping("/c")
-    public String postMethodName(@RequestParam String p1) {
-        return "c";
+    @PostMapping("/games/new")
+    public String createGame(@RequestParam int number, @RequestParam String tip) {
+        return GameHandler.createGame().toString();
+    }
+
+    @PostMapping("/games/guess")
+    public String createGame(@RequestParam String nickname, @RequestParam int id, @RequestParam int number) {
+        return GameHandler.guessNumber(nickname, id, number).toString();
     }
 }

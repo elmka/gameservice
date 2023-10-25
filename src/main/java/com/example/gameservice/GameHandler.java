@@ -10,7 +10,7 @@ public final class GameHandler {
         games = new HashMap<String, GameInfo>();
     }
 
-    public static int createGame(String name) {
+    public static Integer createGame(String name) {
         if (games.containsKey(name)) {
             return 1;
         }
