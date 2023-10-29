@@ -14,7 +14,7 @@ public class GameRestController {
 
     @GetMapping("/")
     public String index() {
-        return "ok";
+        return "Numeronarvauspeli <br><br> /games/ongoing : hae kaikki käynnissä olevat pelit <br>- output formaatti: pelin id, vinkki <br><br> /games/{id} : hae tietty peli <br>- output formaatti: pelin id, vinkki <br><br> /games/new : uusi peli <br>- input parametrit: number, tip<br>- output: pelin id<br><br>/games/guess<br>- input parametrit: nickname, id, number";
     }
 
     @GetMapping("/games/{id}")
