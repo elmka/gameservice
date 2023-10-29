@@ -1,6 +1,8 @@
 package com.example.gameservice;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,7 +37,10 @@ public class GameRestController {
     }
 
     @PostMapping("/games/guess")
-    public String createGame(@RequestParam String nickname, @RequestParam int id, @RequestParam int number) {
-        return GameHandler.guessNumber(id, number, nickname).toString();
+    public Map<String, String> createGame(@RequestParam String nickname, @RequestParam Integer id, @RequestParam int number) {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("id", id.toString());
+        map.put("message", GameHandler.guessNumber(id, number, nickname).toString());
+        return map;
     }
 }
